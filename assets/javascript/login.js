@@ -8,6 +8,11 @@ var config = {
   };
  var rootRef;
  var connectedAs = "";
+ var user = {
+ 	username: "",
+ 	password: "",
+ 	stocks: []
+ }
 function process() {
 	var userName = "";
 	var password = "";

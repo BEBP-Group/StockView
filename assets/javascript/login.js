@@ -39,11 +39,15 @@ function process() {
 	console.log("in process whatToDo " + whatToDo);
 	console.log("whatToDo is " + typeof(whatToDo));
 	var cnt = checkFireBase(userName);
-	workingOn = new User(userName,password);
 	if (whatToDo == "create") {
-		$("#panel1").hide();
-		$("#panel2").show();
-		createPortfolio();
+		if (cnt == 0) {
+		  workingOn = new User(userName,password);
+		  $("#panel1").hide();
+		  $("#panel2").show();
+		  createPortfolio();
+		} else {
+			$("#status").text("user already exists")
+		}  
 	}
 }
 function createPortfolio() {
@@ -61,4 +65,5 @@ function initialize() {
 }
 function checkFireBase(uname) {
 	console.log("in checkFirebase");
+	return(0);
 }

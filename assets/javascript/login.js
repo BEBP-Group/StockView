@@ -38,18 +38,25 @@ function process() {
 	console.log("in process password = " + password);
 	console.log("in process whatToDo " + whatToDo);
 	console.log("whatToDo is " + typeof(whatToDo));
+	var cnt = checkFireBase(userName);
 	workingOn = new User(userName,password);
 	if (whatToDo == "create") {
 		$("#panel1").hide();
 		$("#panel2").show();
+		createPortfolio();
 	}
 }
 function createPortfolio() {
 	var arrayOfCompaniess = [];
+	$("#title").html("Create Portfolio");
+	$("#instructions").text("pick as many as five");
 	console.log("in createPortfolio");
 
 }
 function initialize() {
 	$("#panel2").hide();
 
+}
+function checkFireBase(uname) {
+	console.log("in checkFirebase");
 }

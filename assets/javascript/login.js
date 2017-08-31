@@ -45,6 +45,7 @@ function process() {
 	}
 }
 function createPortfolio() {
+	var arrayOfCompaniess = [];
 	console.log("in createPortfolio");
 
 }

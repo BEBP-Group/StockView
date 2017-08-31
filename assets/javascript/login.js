@@ -55,6 +55,8 @@ function createPortfolio() {
 }
 function initialize() {
 	$("#panel2").hide();
+	firebase.initializeApp(config);
+	database = firebase.database();
 
 }
 function checkFireBase(uname) {

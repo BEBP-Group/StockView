@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<title>StockView Login</title>
 </head>
-<body>
+<body onload="initialize()">
 
 	<div class="container">
 		<div class="jumbotron text-center">
@@ -28,13 +28,31 @@
 	      <input type="radio" name="joke" class ="radio1" id="radio1" value="login" /> Login
           <input type="radio" name="joke" class="radio1" id="radio2" value="create" /> Create Account
        </div>   
-      <p id="status"></p>
+      <p id="status"><strong></strong></p>
 	  <button class="btn btn-primary" id="login">submit</button>
 	  </form>
-	<div id="stockselections">
-	</div> 
-	</div>
-	</div>
+	 </div>
+	 </div> 
+	 <div class="panel panel-primary" id="panel2">
+	  <div class="panel-heading">Choose Portfolio</div>
+	  <div class="panel-body">
+
+	  <div class="form-group" id="form-group-2">
+	  <form id="form2" action="createPortfolio()">
+	    <label>username:</label><br>
+	    <input id="user-name-input"></input><br>
+	    <label>password:</label><br>
+	    <input id="password-input" type="password"></input><br>
+	  </div>
+	  <div>
+	      <input type="radio" name="joke" class ="radio1" id="radio1" value="login" /> Login
+          <input type="radio" name="joke" class="radio1" id="radio2" value="create" /> Create Account
+       </div>   
+      <p id="status1"><strong></strong></p>
+	  <button class="btn btn-primary" id="login">submit</button>
+	  </form>
+	 </div>
+	 </div> 
 	<script type="text/javascript" src="assets/javascript/login.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

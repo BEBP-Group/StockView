@@ -67,5 +67,18 @@ function checkFireBase(uname) {
 	return(0);
 }
 function processCheckBoxes() {
+	var array = [];
+	for (j=1;j<31;j++) {
+		array.push("a");
+	}
 	console.log("in processCheckBoxes");
+	for (i=1;i<31;i++){
+		xoxo = $('input[name='+i+']:checked').val(); 
+		console.log("push " +i);
+		console.log("xoxo = " +xoxo)
+		array.push(xoxo);	
+	}
+	for (i=1;i<31;i++) {
+		console.log(array[i]);
+	}
 }

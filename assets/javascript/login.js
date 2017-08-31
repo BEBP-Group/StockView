@@ -17,6 +17,11 @@ var config = {
  	password: "",
  	stocks: []
  }
+ var workingOn;
+function User(uname,pwd){
+	this.username = uname;
+	this.passwd   = pwd;
+}
 function process() {
 	userName = $("#user-name-input").val().trim();
 	password = $("#password-input").val().trim();
@@ -33,6 +38,7 @@ function process() {
 	console.log("in process password = " + password);
 	console.log("in process whatToDo " + whatToDo);
 	console.log("whatToDo is " + typeof(whatToDo));
+	workingOn = new User(userName,password);
 	if (whatToDo == "create") {
 		$("#panel1").hide();
 		$("#panel2").show();

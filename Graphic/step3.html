@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+	<title></title>
+</head>
+<body>
+<div id="chart_div" style="width: 900px; height: 500px;"></div>
+<div class="price"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- <script type="text/javascript">
+	
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable
+            ([['X', '1'],
+              [1, 10, ],
+              [2, 3, ],
+              [3, 4, ],
+              [4, 5,],
+              [5, 6, ],
+              [6, 7,]
+        ]);
+
+        var options = {
+          legend: 'none',
+          series: {
+            0: { color: '#e2431e' },
+            1: { color: '#e7711b' },
+            2: { color: '#f1ca3a' },
+            3: { color: '#6f9654' },
+            4: { color: '#1c91c0' },
+            5: { color: '#43459d' },
+          }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+
+
+
+
+
+
+
+
+
+</script> -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src = 'jscharts.js'></script>
+<script type="text/javascript">
+	
+var quote;
+var symbol = 'INX';
+var queryURL =  "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol="+symbol+"&outputsize=full&apikey=7L0FQQQ21X7JAJUX";
+
+$.ajax({url: queryURL, method: 'GET'}).done(function(response){
+	var DataToPlot = {
+
+		x:[],
+		y:[],
+		 type: 'scatter'
+	};
+	// console.log(response);
+	var data = response["Time Series (Daily)"];
+
+
+var trace = {
+  x: [], 
+  close: [], 
+  high:[],  
+  low: [],
+  open: [],
+
+  // cutomise colors 
+  increasing: {line: {color: 'green'}},
+  decreasing: {line: {color: 'red'}},
+  
+  type: 'ohlc', 
+  xaxis: 'x', 
+  yaxis: 'y'
+};
+
+
+
+// 1. open
+// :
+// "1469.2500"
+// 2. high
+// :
+// "1478.0000"
+// 3. low
+// :
+// "1438.3600"
+// 4. close
+// :
+// "1455.2200"
+// 5. adjusted close
+// :
+// "1455.2200"
+// 6. volume
+// :
+// "931800000"
+// 7. dividend amount
+// :
+// "0.0000"
+// 8. split coefficient
+// :
+// "1.0000"
+
+
+  for (i in data){
+		var date = i;
+		var open = parseFloat(data[i]["1. open"]);
+		var high = parseFloat(data[i]["2. high"]);
+    var low = parseFloat(data[i]["3. low"]);
+    var close = parseFloat(data[i]["4. close"]);
+
+    trace.x.push(date);
+		trace.open.push(open);
+    trace.high.push(high);
+    trace.low.push(low);
+    trace.close.push(close);
+
+		// console.log(point);
+		// DataToPlot.push(point)
+	}
+	// console.log(DataToPlot);
+
+
+
+
+var data = [trace];
+  
+var layout = {
+  dragmode: 'zoom', 
+  showlegend: false, 
+  xaxis: {
+    autorange: true, 
+    title: 'Date'
+  }, 
+  yaxis: {
+    autorange: true, 
+  }
+};
+
+Plotly.plot('chart_div', data, layout); 
+});
+
+
+
+
+
+
+
+
+
+
+
+// // var data = [trace1];
+// var data = [DataToPlot];
+// Plotly.newPlot('chart_div', data,layout);
+
+
+
+
+
+// });
+
+</script>
+</body>
+</html>
+
+

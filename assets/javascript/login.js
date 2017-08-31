@@ -55,7 +55,6 @@ function createPortfolio() {
 	$("#title").html("Create Portfolio");
 	$("#instructions").text("pick as many as five");
 	console.log("in createPortfolio");
-
 }
 function initialize() {
 	$("#panel2").hide();
@@ -66,4 +65,7 @@ function initialize() {
 function checkFireBase(uname) {
 	console.log("in checkFirebase");
 	return(0);
+}
+function processCheckBoxes() {
+	console.log("in processCheckBoxes");
 }

@@ -14,6 +14,8 @@ function process() {
 	var whatToDo = "";
 	userName = $("#user-name-input").val().trim();
 	password = $("#password-input").val().trim();
+	whatToDo = $('input[name=joke]:checked').val();
 	console.log("in process userName = " + userName);
 	console.log("in process password = " + password);
+	console.log("in process whatToDo " + whatToDo);
 }

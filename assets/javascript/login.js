@@ -55,6 +55,7 @@ function createPortfolio() {
 }
 function initialize() {
 	$("#panel2").hide();
+	$("#panel3").hide();
 	firebase.initializeApp(config);
 	database = firebase.database();
 	rootRef = firebase.database().ref("Users");
@@ -87,6 +88,9 @@ function processCheckBoxes() {
 	if (status == 0) {
 	    workingOn.stocks = array;
 	    saveDataFirstTime();
+	    $("#panel2").hide();
+	    $("#status2").text("User Added");
+	    $("#panel3").show();
     }
 }
 function saveDataFirstTime() {

@@ -70,6 +70,7 @@ function processCheckBoxes() {
 		xoxo = $('input[name='+i+']:checked').val(); 
 		if (xoxo !== undefined){
 			array.push(xoxo);
+			console.log(xoxo);
 		}
 	}	
 	if (array.length > 5){
@@ -77,6 +78,7 @@ function processCheckBoxes() {
 		$("#status1").text("cannot pick more than 5");
 	}
 	workingOn.stocks = array;
+	console.log(workingOn);
 	saveDataFirstTime();
 }
 function saveDataFirstTime() {

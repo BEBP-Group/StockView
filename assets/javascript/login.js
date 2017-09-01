@@ -103,3 +103,6 @@ function saveDataFirstTime() {
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});
 }
+function action() {
+	console.log("in action");
+}

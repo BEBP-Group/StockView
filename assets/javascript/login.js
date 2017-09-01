@@ -63,7 +63,15 @@ function initialize() {
 
 }
 function checkFireBase(uname) {
-	return(0);
+	rnt = 0;
+	var existence = 0;
+	var query = rootRef.orderByChild('username').equalTo(uname).limitToFirst(1);
+	query.on('value',function(snap){
+		console.log("here in checkFireBase");
+		console.log("snap.val() " +snap.val());
+		console.log(snap.key);
+	});	
+	return(rnt);
 }
 function processCheckBoxes() {
 	var array = [];

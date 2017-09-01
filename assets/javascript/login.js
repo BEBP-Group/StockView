@@ -20,7 +20,7 @@ var config = {
  var workingOn;
 function User(uname,pwd){
 	this.username = uname;
-	this.passwd   = pwd;
+	this.password  = pwd;
 	this.stocks   = [];
 }
 function process() {
@@ -56,6 +56,7 @@ function initialize() {
 	$("#panel2").hide();
 	firebase.initializeApp(config);
 	database = firebase.database();
+	rootRef = firebase.database().ref("Users");
 
 }
 function checkFireBase(uname) {
@@ -75,12 +76,25 @@ function processCheckBoxes() {
 	}	
 	if (array.length > 5){
 		status = 1;
-		$("#status1").text("cannot pick more than 5");
+		$("#status1").text("cannot pick more than 5");                                                                                            
 	}
-	workingOn.stocks = array;
-	console.log(workingOn);
-	saveDataFirstTime();
+	if (array.length == 0) {
+		status = 1;
+		$("#status1").text("must pick at least 1");
+	}
+	if (status == 0) {
+	    workingOn.stocks = array;
+	    console.log(workingOn);
+	    saveDataFirstTime();
+    }
 }
 function saveDataFirstTime() {
 	console.log("in saveDataFirstTime");
+	      database.ref().push(
+	    {
+		username: workingOn.username,
+		password: workingOn.password,
+		stocks: workingOn.stocks,
+		dateAdded: firebase.database.ServerValue.TIMESTAMP
+	});
 }

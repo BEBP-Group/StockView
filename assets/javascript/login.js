@@ -37,6 +37,7 @@ function process() {
 		$("#status").text("password cannot be null");
 	}
 	var cnt = checkFireBase(userName);
+	console.log("after checkFireBase cnt = " +cnt);
 	if (whatToDo == "create") {
 		if (cnt == 0) {
 		  workingOn = new User(userName,password);
@@ -69,7 +70,14 @@ function checkFireBase(uname) {
 	query.on('value',function(snap){
 		console.log("here in checkFireBase");
 		console.log("snap.val() " +snap.val());
-		console.log(snap.key);
+		if (snap.val() == null) {
+			console.log("it was  null");
+			return(0);
+		}else {
+			console.log("it was not null");
+			console.log("username = " +snap.val().username);
+			return(1);
+		}
 	});	
 	return(rnt);
 }

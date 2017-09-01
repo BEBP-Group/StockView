@@ -12,6 +12,7 @@ var config = {
  var userName = "";
  var password = "";
  var whatToDo = "";
+ var events   = "";
  var user = {
  	username: "",
  	password: "",
@@ -58,6 +59,7 @@ function initialize() {
 	database = firebase.database();
 	rootRef = firebase.database().ref("Users");
 
+
 }
 function checkFireBase(uname) {
 	return(0);
@@ -84,13 +86,12 @@ function processCheckBoxes() {
 	}
 	if (status == 0) {
 	    workingOn.stocks = array;
-	    console.log(workingOn);
 	    saveDataFirstTime();
     }
 }
 function saveDataFirstTime() {
 	console.log("in saveDataFirstTime");
-	      database.ref().push(
+	     rootRef.push(
 	    {
 		username: workingOn.username,
 		password: workingOn.password,

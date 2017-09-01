@@ -34,10 +34,6 @@ function process() {
 		status = 1;
 		$("#status").text("password cannot be null");
 	}
-	console.log("in process userName = " + userName);
-	console.log("in process password = " + password);
-	console.log("in process whatToDo " + whatToDo);
-	console.log("whatToDo is " + typeof(whatToDo));
 	var cnt = checkFireBase(userName);
 	if (whatToDo == "create") {
 		if (cnt == 0) {
@@ -54,7 +50,6 @@ function createPortfolio() {
 	var arrayOfCompaniess = [];
 	$("#title").html("Create Portfolio");
 	$("#instructions").text("pick as many as five");
-	console.log("in createPortfolio");
 }
 function initialize() {
 	$("#panel2").hide();
@@ -63,22 +58,23 @@ function initialize() {
 
 }
 function checkFireBase(uname) {
-	console.log("in checkFirebase");
 	return(0);
 }
 function processCheckBoxes() {
 	var array = [];
-	for (j=1;j<31;j++) {
-		array.push("a");
-	}
+//	for (j=1;j<31;j++) {
+//		array.push("a");
+//	}
 	console.log("in processCheckBoxes");
 	for (i=1;i<31;i++){
 		xoxo = $('input[name='+i+']:checked').val(); 
-		console.log("push " +i);
-		console.log("xoxo = " +xoxo)
-		array.push(xoxo);	
+		if (xoxo !== undefined){
+			console.log("i push " + xoxo);
+			array.push(xoxo);
+		}
+	//	array.push(xoxo);
 	}
-	for (i=1;i<31;i++) {
-		console.log(array[i]);
+	for (i=0;i<array.length;i++) {
+		console.log(i + " " + array[i]);
 	}
 }

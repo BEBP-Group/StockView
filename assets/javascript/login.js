@@ -21,6 +21,7 @@ var config = {
 function User(uname,pwd){
 	this.username = uname;
 	this.passwd   = pwd;
+	this.stocks   = [];
 }
 function process() {
 	userName = $("#user-name-input").val().trim();
@@ -62,19 +63,22 @@ function checkFireBase(uname) {
 }
 function processCheckBoxes() {
 	var array = [];
-//	for (j=1;j<31;j++) {
-//		array.push("a");
-//	}
+    var status = 0;
+    $("#status1").text(" ");
 	console.log("in processCheckBoxes");
 	for (i=1;i<31;i++){
 		xoxo = $('input[name='+i+']:checked').val(); 
 		if (xoxo !== undefined){
-			console.log("i push " + xoxo);
 			array.push(xoxo);
 		}
-	//	array.push(xoxo);
+	}	
+	if (array.length > 5){
+		status = 1;
+		$("#status1").text("cannot pick more than 5");
 	}
-	for (i=0;i<array.length;i++) {
-		console.log(i + " " + array[i]);
-	}
+	workingOn.stocks = array;
+	saveDataFirstTime();
+}
+function saveDataFirstTime() {
+	console.log("in saveDataFirstTime");
 }

@@ -13,8 +13,8 @@ var config = {
  var password = "";
  var whatToDo = "";
  var events   = "";
- var existingUsers = ["bob","stan","patrick"];
- var existingPasswords = ["bob","stan","patrick"];
+ var existingUsers = [];
+ var existingPasswords = [];
  var user = {
  	username: "",
  	password: "",
@@ -30,9 +30,6 @@ function process() {
 	userName = $("#user-name-input").val().trim();
 	password = $("#password-input").val().trim();
 	whatToDo = $('input[name=joke]:checked').val();
-	console.log("pasword = " + password + " "+password.length);
-	console.log("username = " + userName + " "+userName.length);
-	console.log("whatToDo = " + whatToDo);
 	status = 0;
 	if (userName.length == 0) {
 		status = 1;
@@ -63,7 +60,6 @@ function process() {
 			$("#panel3").show();
 
 		}
-	//	console.log("index = " + index);
 	}
  }	
 }
@@ -84,13 +80,15 @@ function initialize() {
 }
 function getUsers() {
 	rootRef.on('value',function(snap) {
-		console.log("in getUsers");
-		console.log(snap.key);
-		console.log(snap.val());
-		var xoxo = JSON.stringify(snap.val());
-		console.log(xoxo);
+		var pk = snap.val();
+		for(i in pk){
+			console.log(pk[i]['username']);
+			existingUsers.push(pk[i]['username']);
+			console.log(pk[i]['password']);
+			existingPasswords.push(pk[i]['password']);
+			console.log(pk[i]['stocks']);
+		}
 	});
-
 }
 function checkForExistence(uname){
 	var counter = 0;
@@ -101,25 +99,6 @@ function checkForExistence(uname){
 	}
     return(counter);
 }
-//function checkFireBase(uname) {
-//	rnt = 0;
-//	var existence = 0;
-//	var query = rootRef.orderByChild('username').equalTo(uname).limitToFirst(1);
-//	query.on('value',function(snap){
-//		console.log("here in checkFireBase");
-//		console.log("snap.val() " +snap.val());
-//		console.log("snap = " + snap);
-//		if (snap.val() == null) {
-//			console.log("it was  null");
-//			return(0);
-//		}else {
-//			console.log("it was not null");
-//			console.log("username = " +snap.val().username);
-//			return(1);
-//		}
-//	});	
-//	return(rnt);
-//}
 function processCheckBoxes() {
 	var array = [];
     var status = 0;

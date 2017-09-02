@@ -13,6 +13,8 @@ var config = {
  var password = "";
  var whatToDo = "";
  var events   = "";
+ var existingUsers = ["bob","stan","patrick"];
+ var existingPasswords = ["bob","stan","patrick"];
  var user = {
  	username: "",
  	password: "",
@@ -28,6 +30,7 @@ function process() {
 	userName = $("#user-name-input").val().trim();
 	password = $("#password-input").val().trim();
 	whatToDo = $('input[name=joke]:checked').val();
+	console.log("whatToDo = " + whatToDo);
 	if (userName.length == 0) {
 		staus = 1;
 		$("#status").text("user name cannot be null");
@@ -36,9 +39,11 @@ function process() {
 		status = 1;
 		$("#status").text("password cannot be null");
 	}
-	var cnt = checkFireBase(userName);
-	console.log("after checkFireBase cnt = " +cnt);
+//	var cnt = checkFireBase(userName);
+//	console.log("after checkFireBase cnt = " +cnt);
+//    var cnt = checkForExistence(userName);
 	if (whatToDo == "create") {
+		var cnt = checkForExistence(userName);
 		if (cnt == 0) {
 		  workingOn = new User(userName,password);
 		  $("#panel1").hide();
@@ -46,7 +51,18 @@ function process() {
 		  createPortfolio();
 		} else {
 			$("#status").text("user already exists")
-		}  
+		}  		
+	}
+	if (whatToDo == "login") {
+		var index = existingUsers.indexOf(userName);
+		if (existingPasswords[index] != password) {
+			$("#status").text("incorrect password");
+		} else {
+			$("#panel1").hide();
+			$("#panel3").show();
+
+		}
+		console.log("index = " + index);
 	}
 }
 function createPortfolio() {
@@ -60,27 +76,40 @@ function initialize() {
 	firebase.initializeApp(config);
 	database = firebase.database();
 	rootRef = firebase.database().ref("Users");
+	getUsers();
 
 
 }
-function checkFireBase(uname) {
-	rnt = 0;
-	var existence = 0;
-	var query = rootRef.orderByChild('username').equalTo(uname).limitToFirst(1);
-	query.on('value',function(snap){
-		console.log("here in checkFireBase");
-		console.log("snap.val() " +snap.val());
-		if (snap.val() == null) {
-			console.log("it was  null");
-			return(0);
-		}else {
-			console.log("it was not null");
-			console.log("username = " +snap.val().username);
-			return(1);
-		}
-	});	
-	return(rnt);
+function getUsers() {
+
 }
+function checkForExistence(uname){
+	var counter = 0;
+	for (i=0;i<existingUsers.length;i++) {
+		if (existingUsers[i] == uname);
+		counter++;
+	}
+    return(counter);
+}
+//function checkFireBase(uname) {
+//	rnt = 0;
+//	var existence = 0;
+//	var query = rootRef.orderByChild('username').equalTo(uname).limitToFirst(1);
+//	query.on('value',function(snap){
+//		console.log("here in checkFireBase");
+//		console.log("snap.val() " +snap.val());
+//		console.log("snap = " + snap);
+//		if (snap.val() == null) {
+//			console.log("it was  null");
+//			return(0);
+//		}else {
+//			console.log("it was not null");
+//			console.log("username = " +snap.val().username);
+//			return(1);
+//		}
+//	});	
+//	return(rnt);
+//}
 function processCheckBoxes() {
 	var array = [];
     var status = 0;

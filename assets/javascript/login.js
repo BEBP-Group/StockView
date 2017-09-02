@@ -30,25 +30,26 @@ function process() {
 	userName = $("#user-name-input").val().trim();
 	password = $("#password-input").val().trim();
 	whatToDo = $('input[name=joke]:checked').val();
+	console.log("pasword = " + password + " "+password.length);
+	console.log("username = " + userName + " "+userName.length);
 	console.log("whatToDo = " + whatToDo);
+	status = 0;
 	if (userName.length == 0) {
-		staus = 1;
+		status = 1;
 		$("#status").text("user name cannot be null");
 	}
-	if ((status == 0) && (password.length==0)) {
+	if (password.length==0) {
 		status = 1;
 		$("#status").text("password cannot be null");
 	}
-//	var cnt = checkFireBase(userName);
-//	console.log("after checkFireBase cnt = " +cnt);
-//    var cnt = checkForExistence(userName);
-	if (whatToDo == "create") {
-		var cnt = checkForExistence(userName);
-		if (cnt == 0) {
-		  workingOn = new User(userName,password);
-		  $("#panel1").hide();
-		  $("#panel2").show();
-		  createPortfolio();
+	if (status == 0) {
+	  if (whatToDo == "create") {
+	    	var cnt = checkForExistence(userName);
+		    if (cnt == 0) {
+		     workingOn = new User(userName,password);
+		     $("#panel1").hide();
+		     $("#panel2").show();
+		     createPortfolio();
 		} else {
 			$("#status").text("user already exists")
 		}  		
@@ -62,8 +63,9 @@ function process() {
 			$("#panel3").show();
 
 		}
-		console.log("index = " + index);
+	//	console.log("index = " + index);
 	}
+ }	
 }
 function createPortfolio() {
 	var arrayOfCompaniess = [];
@@ -81,13 +83,21 @@ function initialize() {
 
 }
 function getUsers() {
+	rootRef.on('value',function(snap) {
+		console.log("in getUsers");
+		console.log(snap.key);
+		console.log(snap.val());
+		var xoxo = JSON.stringify(snap.val());
+		console.log(xoxo);
+	});
 
 }
 function checkForExistence(uname){
 	var counter = 0;
 	for (i=0;i<existingUsers.length;i++) {
-		if (existingUsers[i] == uname);
-		counter++;
+		if (existingUsers[i] == uname) {
+			counter++;
+		}
 	}
     return(counter);
 }

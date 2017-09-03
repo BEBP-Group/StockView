@@ -111,7 +111,6 @@ function processCheckBoxes() {
 		xoxo = $('input[name='+i+']:checked').val(); 
 		if (xoxo !== undefined){
 			array.push(xoxo);
-			console.log(xoxo);
 		}
 	}	
 	if (array.length > 5){
@@ -131,7 +130,6 @@ function processCheckBoxes() {
     }
 }
 function saveDataFirstTime() {
-	console.log("in saveDataFirstTime");
 	     rootRef.push(
 	    {
 		username: workingOn.username,

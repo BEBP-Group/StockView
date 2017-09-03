@@ -69,7 +69,7 @@ function createPortfolio() {
 	$("#instructions").text("pick as many as five");
 }
 function initialize() {
-//	$("#panel2").hide();
+	$("#panel2").hide();
 	$("#panel3").hide();
 	firebase.initializeApp(config);
 	database = firebase.database();

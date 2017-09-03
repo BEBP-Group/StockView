@@ -81,6 +81,8 @@ function initialize() {
 function getUsers() {
 	rootRef.on('value',function(snap) {
 		var pk = snap.val();
+		existingUsers = [];
+		existingPasswords = [];
 		for(i in pk){
 			console.log(pk[i]['username']);
 			existingUsers.push(pk[i]['username']);
@@ -88,6 +90,7 @@ function getUsers() {
 			existingPasswords.push(pk[i]['password']);
 			console.log(pk[i]['stocks']);
 		}
+		console.log("length of existingUsers = " + existingUsers.length);
 	});
 }
 function checkForExistence(uname){
@@ -111,7 +114,6 @@ function processCheckBoxes() {
 			console.log(xoxo);
 		}
 	}	
-	debugger;
 	if (array.length > 5){
 		status = 1;
 		$("#instructions").text("cannot pick more than 5");                                                                                            
@@ -140,4 +142,7 @@ function saveDataFirstTime() {
 }
 function action() {
 	console.log("in action");
+}
+function changePassword() {
+	console.log("in changrPassword");
 }

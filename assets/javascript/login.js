@@ -111,13 +111,14 @@ function processCheckBoxes() {
 			console.log(xoxo);
 		}
 	}	
+	debugger;
 	if (array.length > 5){
 		status = 1;
-		$("#status1").text("cannot pick more than 5");                                                                                            
+		$("#instructions").text("cannot pick more than 5");                                                                                            
 	}
-	if (array.length == 0) {
+	if (array.length < 1) {
 		status = 1;
-		$("#status1").text("must pick at least 1");
+		$("#instructions").text("must pick at least 1");
 	}
 	if (status == 0) {
 	    workingOn.stocks = array;

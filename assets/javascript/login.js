@@ -86,11 +86,8 @@ function getUsers() {
 		for(i in pk){
 			console.log(pk[i]['username']);
 			existingUsers.push(pk[i]['username']);
-			console.log(pk[i]['password']);
 			existingPasswords.push(pk[i]['password']);
-			console.log(pk[i]['stocks']);
 		}
-		console.log("length of existingUsers = " + existingUsers.length);
 	});
 }
 function checkForExistence(uname){
@@ -106,7 +103,6 @@ function processCheckBoxes() {
 	var array = [];
     var status = 0;
     $("#status1").text(" ");
-	console.log("in processCheckBoxes");
 	for (i=1;i<31;i++){
 		xoxo = $('input[name='+i+']:checked').val(); 
 		if (xoxo !== undefined){

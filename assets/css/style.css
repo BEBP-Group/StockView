@@ -1,3 +1,4 @@
+
 .container {
   background-image: url(../images/image3.jpg);
   background-repeat: no-repeat;
@@ -11,11 +12,6 @@
   right: 0px;
 }
 
-
-
-.jumbotron {
-  font-size: 100px;
-}
 
 .company-button {
 
@@ -35,5 +31,14 @@
 
   margin-top: 40px;
 
+}
+
+#title {
+	background-color: blue;
+	color: white;
+}
+.jumbotron {
+	background-color: blue;
+    font-size: 100px;
 }
 

@@ -21,6 +21,7 @@ var config = {
  	stocks: []
  }
  var workingOn;
+ var saveWorkingOn;
 function User(uname,pwd){
 	this.username = uname;
 	this.password  = pwd;
@@ -44,6 +45,7 @@ function process() {
 	    	var cnt = checkForExistence(userName);
 		    if (cnt == 0) {
 		     workingOn = new User(userName,password);
+		     saveWorkingOn = workingOn;
 		     $("#panel1").hide();
 		     $("#panel2").show();
 		     createPortfolio();
@@ -119,6 +121,7 @@ function processCheckBoxes() {
 	}
 	if (status == 0) {
 	    workingOn.stocks = array;
+	    saveWorkingOn.stocks = array;
 	    saveDataFirstTime();
 	    $("#panel2").hide();
 	    $("#status2").text("User Added");
@@ -135,7 +138,8 @@ function saveDataFirstTime() {
 	});
 }
 function action() {
-	console.log("in action");
+	console.log("in action stokcs are " + saveWorkingOn.stocks);
+	console.log("in action username is  " + saveWorkingOn.username);
 }
 function changePassword() {
 	console.log("in changrPassword");

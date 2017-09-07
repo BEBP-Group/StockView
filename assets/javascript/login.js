@@ -149,3 +149,6 @@ function action() {
 function changePassword() {
 	console.log("in changrPassword");
 }
+function processRadio() {
+	console.log("in processRadio");
+}

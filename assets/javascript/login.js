@@ -90,7 +90,6 @@ function getUsers() {
 		existingPasswords = [];
 		existingStocks = [];
 		for(i in pk){
-			console.log(pk[i]['username']);
 			existingUsers.push(pk[i]['username']);
 			existingPasswords.push(pk[i]['password']);
 			existingStocks.push(pk[i]['stocks']);
@@ -143,8 +142,6 @@ function saveDataFirstTime() {
 	});
 }
 function action() {
-	console.log("in action stokcs are " + saveWorkingOn.stocks);
-	console.log("in action username is  " + saveWorkingOn.username);
 	localStorage.setItem("stocks",saveWorkingOn.stocks);
 	location.href = "choose.html";
 }
@@ -152,10 +149,11 @@ function changePassword() {
 	console.log("in changrPassword");
 }
 function processRadio() {
-	console.log("in processRadio");
-	xoxo = localStorage.getItem("stocks");
-	console.log("in processRadio stocks are " + xoxo);
-	
+	  console.log("in processRadio");
+	  xoxo = localStorage.getItem("stocks");
+	  console.log("in processRadio stocks are " + xoxo);
+      var toto =	$('input[type="radio"]:checked').val();
+	  console.log("toto = " + toto);
 	}
 function initialize2(){
 	var xoxo = localStorage.getItem("stocks");
@@ -163,8 +161,6 @@ function initialize2(){
 		var index = i+1;
 		var elem = $("#rsymbol"+index);
 		var indexo = xoxo.indexOf(elem.val());
-		console.log("indexo= " + indexo);
-	    console.log(elem.val());
 	    if (indexo < 0) {
 	    	$("#rsymbol"+index).remove();
 	    }

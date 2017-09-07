@@ -145,6 +145,7 @@ function saveDataFirstTime() {
 function action() {
 	console.log("in action stokcs are " + saveWorkingOn.stocks);
 	console.log("in action username is  " + saveWorkingOn.username);
+	localStorage.setItem("stocks",saveWorkingOn.stocks);
 	location.href = "choose.html";
 }
 function changePassword() {
@@ -152,4 +153,12 @@ function changePassword() {
 }
 function processRadio() {
 	console.log("in processRadio");
+	xoxo = localStorage.getItem("stocks");
+	console.log("in processRadio stocks are " + xoxo);
+	for (i=0;i<30;i++){
+		//var elem = document.getElementById('rsymbol'+ i+1);
+		var index = i+1;
+		var elem = $("#rsymbol"+index);
+	    console.log(elem.val());
+	}
 }

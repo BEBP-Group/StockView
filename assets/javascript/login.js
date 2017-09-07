@@ -145,6 +145,7 @@ function saveDataFirstTime() {
 function action() {
 	console.log("in action stokcs are " + saveWorkingOn.stocks);
 	console.log("in action username is  " + saveWorkingOn.username);
+	location.href = "choose.html";
 }
 function changePassword() {
 	console.log("in changrPassword");

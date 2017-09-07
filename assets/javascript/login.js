@@ -15,6 +15,7 @@ var config = {
  var events   = "";
  var existingUsers = [];
  var existingPasswords = [];
+ var existingStocks = [];
  var user = {
  	username: "",
  	password: "",
@@ -58,6 +59,8 @@ function process() {
 		if (existingPasswords[index] != password) {
 			$("#status").text("incorrect password");
 		} else {
+			saveWorkingOn = new User(existingUsers[index],existingPasswords[index]);
+			saveWorkingOn.stocks = existingStocks[index];
 			$("#panel1").hide();
 			$("#panel3").show();
 
@@ -85,10 +88,12 @@ function getUsers() {
 		var pk = snap.val();
 		existingUsers = [];
 		existingPasswords = [];
+		existingStocks = [];
 		for(i in pk){
 			console.log(pk[i]['username']);
 			existingUsers.push(pk[i]['username']);
 			existingPasswords.push(pk[i]['password']);
+			existingStocks.push(pk[i]['stocks']);
 		}
 	});
 }

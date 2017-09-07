@@ -159,6 +159,25 @@ function processRadio() {
 		//var elem = document.getElementById('rsymbol'+ i+1);
 		var index = i+1;
 		var elem = $("#rsymbol"+index);
+		var indexo = xoxo.indexOf(elem.val());
+		console.log("indexo= " + indexo);
 	    console.log(elem.val());
+	    if (indexo < 0) {
+	    	$("#rsymbol"+index).remove();
+	    }
 	}
+}
+function initialize2(){
+	var xoxo = localStorage.getItem("stocks");
+	for (i=0;i<30;i++){
+		var index = i+1;
+		var elem = $("#rsymbol"+index);
+		var indexo = xoxo.indexOf(elem.val());
+		console.log("indexo= " + indexo);
+	    console.log(elem.val());
+	    if (indexo < 0) {
+	    	$("#rsymbol"+index).remove();
+	    }
+
+}
 }

@@ -15,12 +15,14 @@ var config = {
  var events   = "";
  var existingUsers = [];
  var existingPasswords = [];
+ var existingStocks = [];
  var user = {
  	username: "",
  	password: "",
  	stocks: []
  }
  var workingOn;
+ var saveWorkingOn;
 function User(uname,pwd){
 	this.username = uname;
 	this.password  = pwd;
@@ -44,6 +46,7 @@ function process() {
 	    	var cnt = checkForExistence(userName);
 		    if (cnt == 0) {
 		     workingOn = new User(userName,password);
+		     saveWorkingOn = workingOn;
 		     $("#panel1").hide();
 		     $("#panel2").show();
 		     createPortfolio();
@@ -56,6 +59,8 @@ function process() {
 		if (existingPasswords[index] != password) {
 			$("#status").text("incorrect password");
 		} else {
+			saveWorkingOn = new User(existingUsers[index],existingPasswords[index]);
+			saveWorkingOn.stocks = existingStocks[index];
 			$("#panel1").hide();
 			$("#panel3").show();
 
@@ -83,14 +88,12 @@ function getUsers() {
 		var pk = snap.val();
 		existingUsers = [];
 		existingPasswords = [];
+		existingStocks = [];
 		for(i in pk){
-			console.log(pk[i]['username']);
 			existingUsers.push(pk[i]['username']);
-			console.log(pk[i]['password']);
 			existingPasswords.push(pk[i]['password']);
-			console.log(pk[i]['stocks']);
+			existingStocks.push(pk[i]['stocks']);
 		}
-		console.log("length of existingUsers = " + existingUsers.length);
 	});
 }
 function checkForExistence(uname){
@@ -106,7 +109,6 @@ function processCheckBoxes() {
 	var array = [];
     var status = 0;
     $("#status1").text(" ");
-	console.log("in processCheckBoxes");
 	for (i=1;i<31;i++){
 		xoxo = $('input[name='+i+']:checked').val(); 
 		if (xoxo !== undefined){
@@ -123,6 +125,7 @@ function processCheckBoxes() {
 	}
 	if (status == 0) {
 	    workingOn.stocks = array;
+	    saveWorkingOn.stocks = array;
 	    saveDataFirstTime();
 	    $("#panel2").hide();
 	    $("#status2").text("User Added");
@@ -139,8 +142,28 @@ function saveDataFirstTime() {
 	});
 }
 function action() {
-	console.log("in action");
+	localStorage.setItem("stocks",saveWorkingOn.stocks);
+	location.href = "choose.html";
 }
 function changePassword() {
 	console.log("in changrPassword");
+}
+function processRadio() {
+	  console.log("in processRadio");
+	  xoxo = localStorage.getItem("stocks");
+	  console.log("in processRadio stocks are " + xoxo);
+      var toto =	$('input[type="radio"]:checked').val();
+	  console.log("toto = " + toto);
+	}
+function initialize2(){
+	var xoxo = localStorage.getItem("stocks");
+	for (i=0;i<30;i++){
+		var index = i+1;
+		var elem = $("#rsymbol"+index);
+		var indexo = xoxo.indexOf(elem.val());
+	    if (indexo < 0) {
+	    	$("#rsymbol"+index).remove();
+	    }
+
+}
 }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>  
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/login.css">
+	<title>Choose Stocks</title>
+</head>
+<body onLoad=initialize2()>
+
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h1 id="title">Choose Stocks</h1>
+
+		</div>
+	<div class="panel panel-primary" id="panel1">
+	  <div class="panel-heading">Pick Stocks for Graphics</div>
+	  <div class="panel-body">
+	 </div>
+	 </div> 
+	 <div class="panel panel-primary" id="panel1">
+	  <div class="panel-heading"></div>
+	  <div class="panel-body">
+
+	  <div class="form-group" id="form-group-1">
+	  <form id="form2" action="javascript:processRadio()">
+	  </div>
+	     <input type="radio" class="rb" id="rsymbol1" name="1" value="NASDAQ:AAPL:Apple">Apple<br>
+         <input type="radio" class="rb" id="rsymbol2" name="1" value="NYSE:AXP:American Express"> American Express<br>
+         <input type="radio" class="rb" id="rsymbol3" name="1" value="NYSE:BA:Bo:Boeing"> Boeing<br>
+         <input type="radio" class="rb" id="rsymbol4" name="1" value="NYSE:CAT:Catepillar"> Caterpillar<br>
+         <input type="radio" class="rb" id="rsymbol5" name="1" value="NASDAQ:CSCO:Cisco Systems"> Cisco Systems<br>
+         <input type="radio" class="rb" id="rsymbol6" name="1" value="NYSE:CVX:Chevron"> Chrevon<br>
+         <input type="radio" class="rb" id="rsymbol7" name="1" value="NYSE:KO:Coca-Cola"> Coca-Cola<br>
+         <input type="radio" class="rb" id="rsymbol8" name="1" value="NYSE:DD:DuPont"> DuPont<br>
+         <input type="radio" class="rb" id="rsymbol9" name="1" value="NYSE:XOM:ExxonMobil"> ExxonMobil<br>
+         <input type="radio" class="rb" id="rsymbol10" name="1" value="NYSE:GE:General Electric"> General Electric<br>
+         <input type="radio" class="rb" id="rsymbol11" name="1" value="NYSE:GS:Goldman Sachs"> Goldman Sachs<br>
+         <input type="radio" class="rb" id="rsymbol12" name="1" value="NYSE:HD:Home Depot"> Home Depot<br>
+         <input type="radio" class="rb" id="rsymbol13" name="1" value="NYSE:IBM:IBM"> IBM<br>
+         <input type="radio" class="rb" id="rsymbol14" name="1" value="NASDAQ:INTC:Intel"> Intel<br>
+         <input type="radio" class="rb" id="rsymbol15" name="1" value="NYSE:JNJ:Johnson and Johnson"> Johnson and Johnson<br>
+         <input type="radio" class="rb" id="rsymbol16" name="1" value="NYSE:JPM:JPMorgan Chase"> JPMorgan Chase<br>
+         <input type="radio" class="rb" id="rsymbol17" name="1" value="NYSE:MCD:McDonald's"> McDonald's <br>
+         <input type="radio" class="rb" id="rsymbol18" name="1" value="NYSE:MMM:3M Company"> 3M Company<br>
+         <input type="radio" class="rb" id="rsymbol19" name="1" value="NYSE:MRK:Merck"> Merck<br>
+         <input type="radio" class="rb" id="rsymbol20" name="1" value="NASDAQ:MSFT:Microsoft"> Microsoft<br>
+         <input type="radio" class="rb" id="rsymbol21" name="1" value="NYSE:NKE:Nike"> Nike<br>
+         <input type="radio" class="rb" id="rsymbol22" name="1" value="NYSE:PFE:Pfizer"> Pfizer<br>
+         <input type="radio" class="rb" id="rsymbol23" name="1" value="NYSE:PG:Proctor and Gamble"> Proctor and Gamble<br>
+         <input type="radio" class="rb" id="rsymbol24" name="1" value="NYSE:TRV:The Travallers"> The Travellers<br>
+         <input type="radio" class="rb" id="rsymbol25" name="1" value="NYSE:UNH:UnitedHealth"> UnitedHealth<br>
+         <input type="radio" class="rb" id="rsymbol26" name="1" value="NYSE:UTX:United Technologies"> United Technologies<br>
+         <input type="radio" class="rb" id="rsymbol27" name="1" value="NYSE:V:Visa"> Visa<br>
+         <input type="radio" class="rb" id="rsymbol28" name="1" value="NYSE:VZ:Verizon"> Verizon<br>
+         <input type="radio" class="rb" id="rsymbol29" name="1" value="NYSE:WMT:Walmart"> Walmart<br>
+         <input type="radio" class="rb" id="rsymbol30" name="1" value="NYSE:DIS:Walt Disney"> Walt Disney<br>
+	  <button class="btn btn-primary" id="createradio">submit</button>
+	  </form>
+	 </div>
+	 </div> 
+	  </div> 
+	<script type="text/javascript" src="assets/javascript/login.js"></script> 
+	<!-- <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

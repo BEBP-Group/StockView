@@ -149,11 +149,21 @@ function changePassword() {
 	console.log("in changrPassword");
 }
 function processRadio() {
+	  var companyName = "";
+	  var exchange    = "";
+	  var symbol      ="";
+	  var array = [];
 	  console.log("in processRadio");
 	  xoxo = localStorage.getItem("stocks");
 	  console.log("in processRadio stocks are " + xoxo);
       var toto =	$('input[type="radio"]:checked').val();
 	  console.log("toto = " + toto);
+	  array = toto.split(":");
+	  console.log("array = " + array);
+	  symbol = array[1];
+	  console.log("symbol = " + symbol);
+	  exchange = array[0];
+	  companyName = array[2];
 	}
 function initialize2(){
 	var xoxo = localStorage.getItem("stocks");

@@ -143,8 +143,8 @@ function saveDataFirstTime() {
 }
 function action() {
 	localStorage.setItem("stocks",saveWorkingOn.stocks);
-	// location.href = "project-1/StockView/dummy.html";
-	Start();
+	location.href = "portfolioview.html";
+	// Start();
 }
 function changePassword() {
 	console.log("in changrPassword");

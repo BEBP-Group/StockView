@@ -1,5 +1,0 @@
-...
-var len = questionsSnapshot.length;
-for (var i = 0; i < len; i++) {
-  console.log(questionsSnapshot[i].val());
-}
